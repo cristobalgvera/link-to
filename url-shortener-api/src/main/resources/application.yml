@@ -1,0 +1,8 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: postgres
+  jpa:
+    show-sql: true
