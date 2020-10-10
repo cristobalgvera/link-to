@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import to.link.urlshortener.constant.UrlServiceMessages;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
@@ -70,7 +71,7 @@ public class UrlServiceImpl implements UrlService {
         return url.getUri();
     }
 
-    private void trackClicks(Url url) {
+    private void trackClicks(@NotNull Url url) {
         url.addClickLog(LocalDateTime.now());
         update(url);
     }

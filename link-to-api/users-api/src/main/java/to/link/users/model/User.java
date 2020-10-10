@@ -8,6 +8,10 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import static to.link.users.constant.UserMessages.*;
 
 @Entity
@@ -29,5 +33,13 @@ public class User {
     @Email(message = INVALID_EMAIL)
     @NotBlank(message = EMAIL_MUST_NOT_BE_EMPTY)
     private String email;
+
+    @ElementCollection
+    @JsonIgnore
+    private List<LocalDateTime> logs = new ArrayList<>();
+
+    public void addLog(LocalDateTime log) {
+        logs.add(log);
+    }
 
 }
